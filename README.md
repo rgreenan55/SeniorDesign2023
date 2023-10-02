@@ -2,7 +2,16 @@
 Note : Used [this](https://mrseanbaines.medium.com/how-to-write-a-minimal-react-boilerplate-from-scratch-85ba17757040) tutorial to created this boilerplate - and made my own adjustments.
 
 ### Usage
-To use this, simply ```git clone``` this repository, then alter as needed.
+To retrieve and use the react-boilerplate.
+
+First create a new repository in github, then, create a folder and run these commands within it:
+```
+git clone git@github.com:rgreenan55/react-boilerplate.git .
+git remote set-url origin <ssh of repo you created>
+git add .
+git commit -a -m 'Msg'
+git push origin master
+```
 
 ### File Changes
 - In [index.html](./src/index.html) adjust the title tag.
