@@ -1,6 +1,11 @@
 # Boiler Plate
 Note : Used [this](https://mrseanbaines.medium.com/how-to-write-a-minimal-react-boilerplate-from-scratch-85ba17757040) tutorial to created this boilerplate - and made my own adjustments.
 
+### Prior to Setup
+Ensure you have:
+- [Git](https://git-scm.com/download/win) downloadeded and setup on your computer. ```git -v``` in terminal to check.
+- [NodeJS/Npm](https://nodejs.org/en/download/current) downloaded and setup on your computer. ```node -v``` and ```npm -v``` in terminal to check.
+
 ### Usage
 To retrieve and use the react-boilerplate.
 
@@ -20,8 +25,8 @@ git push origin master
 - In [package-lock.json](./package-lock.json) adjust the name attribute.
 
 ### Commonly Used Additions
-- [MaterialUI](https://mui.com/material-ui/getting-started/installation/)
-- [React Router](https://reactrouter.com/en/main/start/tutorial)
+- [MaterialUI](https://mui.com/material-ui/getting-started/installation/) ```npm install @mui/material @emotion/react @emotion/styled```
+- [React Router](https://reactrouter.com/en/main/start/tutorial) ```npm install react-router-dom```
 
 ### Once Setup - Delete Everything Above Here
 
