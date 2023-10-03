@@ -8,6 +8,7 @@ First create a new repository in github, then, create a folder and run these com
 ```
 git clone git@github.com:rgreenan55/react-boilerplate.git .
 git remote set-url origin <ssh of repo you created>
+npm i
 git add .
 git commit -a -m 'Msg'
 git push origin master
