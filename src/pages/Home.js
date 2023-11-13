@@ -7,9 +7,9 @@ const Home = () => {
     return (
         <>
             <Map />
-            <Grid container>
+            <Grid container height='100vh' direction='row' justifyContent='center'>
                 <Grid item xs={8.9}/>
-                <Grid item xs={3}>
+                <Grid item xs={3} zIndex={1}>
                     <Sidebar />
                 </Grid>
                 <Grid item xs={0.1} />
