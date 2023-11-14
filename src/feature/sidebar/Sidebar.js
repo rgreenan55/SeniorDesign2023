@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Paper, Tabs, Tab, TextField, Autocomplete } from '@mui/material';
+import { Box, Paper, Tabs, Tab } from '@mui/material';
 import SearchTab from './SearchTab';
 
 const Sidebar = () => {
@@ -14,11 +14,10 @@ const Sidebar = () => {
                     <Tab label='Filter' />
                 </Tabs>
                 <Box role='tabpanel' hidden={tabValue !== 0} p='16px'>
-                    {/* https://mui.com/material-ui/react-autocomplete/#google-maps-place */}
                     <SearchTab />
                 </Box>
                 <Box role='tabpanel' hidden={tabValue !== 1} p='16px'>
-                    Hey
+                    Put Filter Related Stuff Here
                 </Box>
             </Box>
         </Paper>

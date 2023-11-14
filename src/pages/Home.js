@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <Map />
-            <Grid container height='100vh' direction='row' justifyContent='center'>
+            <Grid container height='100vh' alignItems='center'>
                 <Grid item xs={8.9}/>
                 <Grid item xs={3} zIndex={1}>
                     <Sidebar />
