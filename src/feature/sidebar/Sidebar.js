@@ -17,7 +17,7 @@ const Sidebar = () => {
                     <SearchTab />
                 </Box>
                 <Box role='tabpanel' hidden={tabValue !== 1} p='16px'>
-                    Put Filter Related Stuff Here
+                    Work in Progress
                 </Box>
             </Box>
         </Paper>
