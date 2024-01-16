@@ -7,12 +7,10 @@ const Home = () => {
     return (
         <>
             <Map />
-            <Grid container height='100vh' alignItems='center'>
-                <Grid item xs={8.9}/>
+            <Grid container height='100vh' p='16px' justify='flex-end'>
                 <Grid item xs={3} zIndex={1}>
                     <Sidebar />
                 </Grid>
-                <Grid item xs={0.1} />
             </Grid>
         </>
     );

@@ -1,26 +1,24 @@
 import React from 'react';
 import { Box, Paper, Tabs, Tab } from '@mui/material';
-import SearchTab from './SearchTab';
+import SearchBar from './SearchBar';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Sidebar = () => {
     const [tabValue, setTabValue] = React.useState(0);
     const handleTabChange = (_, newValue) => setTabValue(newValue);
 
     return (
-        <Paper style={{ borderRadius: '24px' }}>
-            <Box height='95vh'>
-                <Tabs value={tabValue} onChange={handleTabChange} variant='fullWidth'>
-                    <Tab label='Search' />
-                    <Tab label='Filter' />
-                </Tabs>
-                <Box role='tabpanel' hidden={tabValue !== 0} p='16px'>
-                    <SearchTab />
+        <>
+            <Paper style={{ borderRadius: '12px' }}>
+                <Box paddingY='8px' paddingX='16px'>
+                    <SearchBar />
                 </Box>
-                <Box role='tabpanel' hidden={tabValue !== 1} p='16px'>
-                    Work in Progress
-                </Box>
-            </Box>
-        </Paper>
+            </Paper>
+            <Paper style={{ borderRadius: '24px' }}>
+                {/*TODO: Add Functionality for Filters*/}
+            </Paper>
+        </>
+
     );
 }
 
