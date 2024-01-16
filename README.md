@@ -8,10 +8,12 @@ Ensure you have:
 - In [package.json](./package.json) adjust the name attribute.
 - In [package-lock.json](./package-lock.json) adjust the name attribute.
 
-### Once Setup - Delete Everything Above Here
-
 # Setup
 
+### ENV Varaibles
+```
+NAME=****
+```
 ### Ensure you have npm installed
 ``` npm -v ```
 ``` npm i ```
