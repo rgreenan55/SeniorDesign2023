@@ -4,16 +4,16 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { FormTextField, FormNumberField, FormYearField } from '../../components/CustomTextFields';
 
-const FilterBox = () => {
+const FilterBox = ({ setData }) => {
     const [open, setOpen] = React.useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget)
     
-        for (var [key, val] of formData.entries()) {
-            console.log(key, val);
-        }
+        const obj = {};
+        for (var [key, val] of formData.entries())  obj[key] = val;
+        setData(obj);
     }
 
     return (
