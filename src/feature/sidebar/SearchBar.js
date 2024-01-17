@@ -2,7 +2,6 @@ import React from 'react';
 import { Autocomplete, Box, InputAdornment, Paper, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-// https://mui.com/material-ui/react-autocomplete/#google-maps-place
 const SearchBar = () => {
     const [value, setValue] = React.useState("");
     const [inputValue, setInputValue] = React.useState("")
@@ -16,19 +15,19 @@ const SearchBar = () => {
     const renderInput = (params) => (
         <TextField
             {...params}
-            placeholder='Add a location'
+            placeholder='Search Address'
             variant='standard'
             fullWidth
             InputProps={{
                 ...params.InputProps,
-                startAdornment: <InputAdornment sx={{ paddingRight: "8px" }}> <SearchIcon/> </InputAdornment>,
+                startAdornment: <InputAdornment position='start'> <SearchIcon/> </InputAdornment>,
                 disableUnderline: true
             }}
         />
     )
 
     return (
-        <Box>
+        <Box paddingY='8px' paddingX='16px'>
             <Autocomplete
                 value={value}
                 options={options}

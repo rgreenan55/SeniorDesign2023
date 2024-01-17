@@ -1,23 +1,18 @@
 import React from 'react';
-import { Box, Paper, Tabs, Tab } from '@mui/material';
+import { Paper, Stack } from '@mui/material';
 import SearchBar from './SearchBar';
-import SearchIcon from '@mui/icons-material/Search';
+import FilterBox from './FilterBox';
 
 const Sidebar = () => {
-    const [tabValue, setTabValue] = React.useState(0);
-    const handleTabChange = (_, newValue) => setTabValue(newValue);
-
     return (
-        <>
+        <Stack spacing={2}>
             <Paper style={{ borderRadius: '12px' }}>
-                <Box paddingY='8px' paddingX='16px'>
-                    <SearchBar />
-                </Box>
+                <SearchBar />
             </Paper>
             <Paper style={{ borderRadius: '24px' }}>
-                {/*TODO: Add Functionality for Filters*/}
+                <FilterBox />
             </Paper>
-        </>
+        </Stack>
 
     );
 }
