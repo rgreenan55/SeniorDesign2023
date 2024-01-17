@@ -1,6 +1,7 @@
 import React from 'react';
-import { Autocomplete, Box, InputAdornment, Paper, TextField } from '@mui/material';
+import { Autocomplete, Box, IconButton, InputAdornment, Paper, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 const SearchBar = () => {
     const [value, setValue] = React.useState("");
@@ -27,7 +28,7 @@ const SearchBar = () => {
     )
 
     return (
-        <Box paddingY='8px' paddingX='16px'>
+        <Box display='flex' paddingY='8px' paddingX='16px'>
             <Autocomplete
                 value={value}
                 options={options}
@@ -41,7 +42,11 @@ const SearchBar = () => {
                 renderInput={renderInput}
                 //renderOption={renderOption}
                 clearIcon={null}
+                sx={{ flex: 1 }}
             />
+            <IconButton size='small'>
+                <KeyboardReturnIcon fontSize='small' />
+            </IconButton>
         </Box>
     );
 }
