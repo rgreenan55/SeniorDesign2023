@@ -19,7 +19,7 @@ const Recenter = ({ location }) => {
 const Map = () => {
     const [location, setLocation] = React.useState();
 
-    React.useEffect(() => {
+    React.useEffect(() => {        
         const showCurrnetPosition = (position) => {
             setLocation([position.coords.latitude, position.coords.longitude])
         }
@@ -28,10 +28,10 @@ const Map = () => {
 
     return (
         <Box position='absolute' width='100%' height='100vh' zIndex={1}>
-            <MapContainer center={coordinates.Default} zoom={14} zoomControl={false}>
+            <MapContainer center={coordinates.Fredericton} zoom={14} zoomControl={false}>
                 <TileLayer url={'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'} subdomains={['mt0','mt1','mt2','mt3']} />
                 <ZoomControl position={'bottomright'}/>
-                <Recenter location={location} />
+                {/* <Recenter location={location} /> */}
             </MapContainer>
         </Box>
     )
