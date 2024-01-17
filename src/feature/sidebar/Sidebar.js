@@ -1,26 +1,19 @@
 import React from 'react';
-import { Box, Paper, Tabs, Tab } from '@mui/material';
-import SearchTab from './SearchTab';
+import { Paper, Stack } from '@mui/material';
+import SearchBar from './SearchBar';
+import FilterBox from './FilterBox';
 
 const Sidebar = () => {
-    const [tabValue, setTabValue] = React.useState(0);
-    const handleTabChange = (_, newValue) => setTabValue(newValue);
-
     return (
-        <Paper style={{ borderRadius: '24px' }}>
-            <Box height='95vh'>
-                <Tabs value={tabValue} onChange={handleTabChange} variant='fullWidth'>
-                    <Tab label='Search' />
-                    <Tab label='Filter' />
-                </Tabs>
-                <Box role='tabpanel' hidden={tabValue !== 0} p='16px'>
-                    <SearchTab />
-                </Box>
-                <Box role='tabpanel' hidden={tabValue !== 1} p='16px'>
-                    Work in Progress
-                </Box>
-            </Box>
-        </Paper>
+        <Stack spacing={2}>
+            <Paper style={{ borderRadius: '12px' }}>
+                <SearchBar />
+            </Paper>
+            <Paper style={{ borderRadius: '24px' }}>
+                <FilterBox />
+            </Paper>
+        </Stack>
+
     );
 }
 
