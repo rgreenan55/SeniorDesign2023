@@ -44,7 +44,6 @@ const SearchBar = ({ setData }) => {
                 onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
                 autoComplete
                 includeInputInList
-                disableClearable
                 renderInput={renderInput}
                 sx={{ flex: 1 }}
             />
