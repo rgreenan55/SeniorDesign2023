@@ -14,8 +14,8 @@ const ResultsSidebarContainer = ({ children }) => {
             zIndex={2}
             component={motion.div}
             initial={{ x: '-100%' }}
-            animate={{ x: 0, transition: { duration: 0.7 }}}
-            exit={{ x: '-100%', transition: { duration: 0.7 }}}
+            animate={{ x: 0, transition: { duration: 0.5 }}}
+            exit={{ x: '-100%', transition: { duration: 0.5 }}}
         >
             {children}
         </Box>

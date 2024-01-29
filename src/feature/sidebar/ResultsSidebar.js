@@ -7,7 +7,7 @@ const ResultsSidebar = ({ setData, data }) => {
         <Paper>            
             <Box height='100vh'>
                 <Box display='flex' flex={1} justifyContent='end'>
-                    <IconButton onClick={() => setData(null)}> <ExitToApp /> </IconButton>
+                    <IconButton onClick={() => setData(null)}> <ExitToApp sx={{ transform: 'scaleX(-1)' }}/> </IconButton>
                 </Box>
                 <Typography flex={1} textAlign='center'> Loading... </Typography>
             </Box>
