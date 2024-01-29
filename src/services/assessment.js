@@ -1,9 +1,16 @@
 import axios from 'axios';
 
-const baseURL = process.env.API_BASE_URL
+const api = axios.create({
+    baseURL: 'http://127.0.0.1:5000/',
+    headers: { 'Access-Control-Allow-Origin': '*' }
+});
 
 const GetAssessment = async () => {
-    let data = await axios.get(baseURL)
+    //const baseURL = process.env.REACT_APP_API_BASE_URL
+
+    let data = await api.get('/get-test-url')
 
     return data;
 }
+
+export { GetAssessment };
