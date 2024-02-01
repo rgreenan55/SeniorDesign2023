@@ -9,7 +9,17 @@ const SearchBar = () => {
     const [options, setOptions] = React.useState([]);
 
     React.useEffect(() => {
-        let data = inputValue ? ['aaa', 'aab'] : [];    // TODO: Retrieve from Google via API?
+        // let data = inputValue ? ['aaa', 'aab'] : [];    // TODO: Retrieve from Google via API?
+        let autocomplete;
+        function initAutocomplete(){
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete'),
+                {
+                    types: ['address'],
+                    componentRestictions: {'country' :['CA']},
+                    fields: ['place_id', 'geometry', 'name']
+                })
+        }
         setOptions(data);
     }, [inputValue]);
 
