@@ -3,14 +3,14 @@ import { Paper, Stack } from '@mui/material';
 import SearchBar from './SearchBar';
 import FilterBox from './FilterBox';
 
-const Sidebar = () => {
+const Sidebar = ({ setData }) => {
     return (
         <Stack spacing={2}>
             <Paper style={{ borderRadius: '12px' }}>
-                <SearchBar />
+                <SearchBar setData={setData} />
             </Paper>
             <Paper style={{ borderRadius: '24px' }}>
-                <FilterBox />
+                <FilterBox setData={setData} />
             </Paper>
         </Stack>
 

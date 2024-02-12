@@ -1,17 +1,24 @@
 import React from 'react';
-import { Autocomplete, Box, IconButton, InputAdornment, Paper, TextField } from '@mui/material';
+import { Autocomplete, Box, Divider, IconButton, InputAdornment, Paper, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
+import { Button } from '@mui/base';
 
-const SearchBar = () => {
-    const [value, setValue] = React.useState("");
-    const [inputValue, setInputValue] = React.useState("")
+const SearchBar = ({ setData }) => {
+    const [value, setValue] = React.useState(null);
+    const [inputValue, setInputValue] = React.useState('')
     const [options, setOptions] = React.useState([]);
 
     React.useEffect(() => {
-        let data = inputValue ? ['aaa', 'aab'] : [];    // TODO: Retrieve from Google via API?
+        // TODO : Have this ping external API for address auto-complete options.
+        let data = inputValue ? ['aaa', 'aab'] : [];
         setOptions(data);
     }, [inputValue]);
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        setData(value);
+    }
 
     const renderInput = (params) => (
         <TextField
@@ -33,18 +40,14 @@ const SearchBar = () => {
                 value={value}
                 options={options}
                 noOptionsText={"No Locations Found"}
-                onChange={(_, newValue) => {
-                    setInputValue(newValue);
-                    setValue(newValue);
-                }}
+                onChange={(_, newValue) => setValue(newValue)}
                 onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
-                freeSolo={!inputValue}
+                autoComplete
+                includeInputInList
                 renderInput={renderInput}
-                //renderOption={renderOption}
-                clearIcon={null}
                 sx={{ flex: 1 }}
             />
-            <IconButton size='small'>
+            <IconButton size='small' onClick={onSubmit}>
                 <KeyboardReturnIcon fontSize='small' />
             </IconButton>
         </Box>
