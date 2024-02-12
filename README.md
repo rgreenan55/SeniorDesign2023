@@ -23,7 +23,12 @@ EXAMPLE=****
 If NodeJS / npm is not installed, download [here](https://nodejs.org/en/download/)
 
 
+# Testing
+```npm install cypress -D```
+```npx cypress open```
+
 # Tools
 
 ### ReactJS
 https://reactjs.org/
+### Cypress
