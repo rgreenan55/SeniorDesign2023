@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Sidebar from '../feature/sidebar/Sidebar';
 import ResultsSidebar from '../feature/sidebar/ResultsSidebar';
 import Map from '../feature/map/Map';
+import { GetAssessment } from '../services/assessment';
 
 const ResultsSidebarContainer = ({ children }) => {
     return (
@@ -24,6 +25,14 @@ const ResultsSidebarContainer = ({ children }) => {
 
 const Home = () => {
     const [searchData, setSearchData] = React.useState(null);
+
+    React.useEffect(() => {
+        const f = async () => {
+            let a = await GetAssessment();
+            console.log(a);
+        }
+        f();
+    }, [])
 
     return (
         <>
