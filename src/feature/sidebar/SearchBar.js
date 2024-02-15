@@ -20,7 +20,8 @@ const SearchBar = () => {
                     fields: ['place_id', 'geometry', 'name']
                 })
         }
-        setOptions(data);
+        initAutocomplete();
+        setOptions(autocomplete);
     }, [inputValue]);
 
     const renderInput = (params) => (
