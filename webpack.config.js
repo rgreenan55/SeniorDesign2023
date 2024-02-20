@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     plugins: [
@@ -7,6 +8,8 @@ module.exports = {
             template: path.resolve(__dirname, 'src/index.html'),
             favicon: './src/assets/icon/favicon.ico',
         }),
+        // fix "process is not defined" error:
+        new Dotenv()
     ],
     module: {
         rules: [
