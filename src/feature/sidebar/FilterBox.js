@@ -31,12 +31,12 @@ const FilterBox = ({ setData }) => {
 
                         <FormYearField name="dateConstructed" />
 
-                        <Button type='submit' variant='contained'> Assess by Filters </Button>
+                        <Button type='submit' variant='contained'>Assess by Filters</Button>
                     </Stack>
                 </Box>
             )}
             {open && <Divider />}
-            <Button onClick={() => setOpen(!open)} fullWidth style={{ borderRadius: open ? '0px 0px 24px 24px' : '24px' }}>
+            <Button onClick={() => setOpen(!open)} fullWidth style={{ borderRadius: open ? '0px 0px 24px 24px' : '24px' }} data-testid="FilterDropDown">
                 {open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
             </Button>
         </Box>
