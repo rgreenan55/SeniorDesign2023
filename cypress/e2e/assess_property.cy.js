@@ -10,6 +10,8 @@ describe("Test Assessment Request", () => {
         cy.get('[data-testid="KeyboardReturnIcon"]').click()
         
         cy.wait(1000)
+        cy.get("p").contains("500000")
+
         cy.get('[data-testid="ExitToAppIcon"]').click()
     })
 
@@ -25,6 +27,8 @@ describe("Test Assessment Request", () => {
         cy.get('button').contains('Assess by Filters').click()
 
         cy.wait(1000)
+        cy.get("p").contains("500000")
+
         cy.get('[data-testid="ExitToAppIcon"]').click()
 
     })
