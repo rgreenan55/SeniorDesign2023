@@ -32,7 +32,12 @@ If NodeJS / npm is not installed, download [here](https://nodejs.org/en/download
 # Testing
 In order to run the automated tests, ensure the above Setup section has been completed.
 
-Simply initiate the tests using npm:
+First, ensure the applicaiton with running with:
+```
+npm start
+```
+
+Then, simply initiate the tests using npm:
 ```
 npm test
 ```
