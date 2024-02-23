@@ -1,34 +1,48 @@
-### Prior to Setup
+# Prior to Setup
 Ensure you have:
-- [Git](https://git-scm.com/download/win) downloadeded and setup on your computer. ```git -v``` in terminal to check.
-- [NodeJS/Npm](https://nodejs.org/en/download/current) downloaded and setup on your computer. ```node -v``` and ```npm -v``` in terminal to check.
+1. [Git](https://git-scm.com/download/win)
+2. [NodeJS/Npm](https://nodejs.org/en/download/current)
 
-### File Changes
-- In [index.html](./src/index.html) adjust the title tag.
-- In [package.json](./package.json) adjust the name attribute.
-- In [package-lock.json](./package-lock.json) adjust the name attribute.
+Use these commands in the terminal to check:
+```
+git -v
+node -v
+npm -v
+```
+
 
 # Setup
 
 ### ENV Varaibles
 ```
-EXAMPLE=****
+REACT_APP_API_BASE_URL=****
 ```
 
-### Ensure you have npm installed
-``` npm -v ```
-``` npm i ```
-``` npm start ```
+### Installing Packages
+Next you want to install the requires javascript packages using npm.\
+Once the install is complete, you can start the application:
+```
+npm i 
+npm start
+```
 
-If NodeJS / npm is not installed, download [here](https://nodejs.org/en/download/)
+If NodeJS / npm is not installed, download [here](https://nodejs.org/en/download/).
 
 
 # Testing
-```npm install cypress -D```
-```npx cypress open```
+In order to run the automated tests, ensure the above Setup section has been completed.
 
-# Tools
+Simply initiate the tests using npm:
+```
+npm test
+```
+Then, once cypress has launched, select E2E or Component testing, then select your browser of choice. From here you can select which test(s) you want to perform.
 
-### ReactJS
-https://reactjs.org/
-### Cypress
+# Major Tools Used
+|   Name            |                       Link                            |
+|-------------------|-------------------------------------------------------|
+|   ReactJS         | https://reactjs.org/                                  |
+|   Cypress         | https://docs.cypress.io/                              |
+|   Leaflet         | https://react-leaflet.js.org/                         |
+|   Framer Motion   | https://www.framer.com/motion/                        |
+|   Material UI     | https://mui.com/                                      |
