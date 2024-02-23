@@ -6,10 +6,14 @@ const api = axios.create({
 });
 
 const GetAssessment = async () => {
-    let response = await api.get('/get-test-url');
-    let data = response.data;
-
-    return data;
+    try {
+        let response = await api.get('/get-test-url');
+        let data = response.data;
+    
+        return data;
+    } catch (e) {
+        return null;
+    }
 }
 
 export { GetAssessment };
