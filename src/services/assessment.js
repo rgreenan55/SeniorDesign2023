@@ -7,14 +7,14 @@ const api = axios.create({
 
 const RequestAIArguments = async () => {
     try {
-        let reponse = await api.get('/get-ai-args');
+        let response = await api.get('/get-ai-args');
         let data = response.data;
 
         // Of the form [{name: 'x', type: 'double'}]
 
         return data;
     } catch(e) {
-        return null;
+        return [];
     }
 }
 
@@ -30,7 +30,7 @@ const GetAssessmentByArguments = async (data) => {
     }
 }
 
-const GetAssessmentByAdresses = async (data) => {
+const GetAssessmentByAddress = async (data) => {
     try {
         // Address Data
         let response = await api.get('/get-assessment-by-address', { params: { arguments: data }});
@@ -44,5 +44,5 @@ const GetAssessmentByAdresses = async (data) => {
 export {
     RequestAIArguments,
     GetAssessmentByArguments,
-    GetAssessmentByAdresses
+    GetAssessmentByAddress
 };

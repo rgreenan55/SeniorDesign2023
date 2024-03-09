@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { InputAdornment, TextField } from '@mui/material';
 
-const FormNumberField = ({ name, ...props }) => {
+const FormNumberField = ({ name, currency, ...props }) => {
     const label = name.replace(/([A-Z])/g, " $1");
 
     return (
@@ -12,7 +12,10 @@ const FormNumberField = ({ name, ...props }) => {
             label={label.charAt(0).toUpperCase() + label.slice(1)}
             defaultValue={0}
             InputLabelProps={{ shrink: true }}
-            InputProps={{ inputProps: { min: 0 }}}
+            InputProps={{
+                inputProps: { min: 0, step: 0.01 },
+                startAdornment: currency ? <InputAdornment position='start'>$</InputAdornment> : null
+            }}
             {...props}
         />
     )
