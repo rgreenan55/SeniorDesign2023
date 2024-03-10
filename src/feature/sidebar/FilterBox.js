@@ -35,11 +35,11 @@ const FilterBox = ({ setData }) => {
                             const type = field.type;
 
                             if (type === 'float64') {
-                                return <FormNumberField name={field.type} currency={field.currency} />
+                                return <FormNumberField name={field.name} currency={field.currency} />
                             } else if (type == 'datetime') {
-                                return <FormYearField name={field.type}/>
+                                return <FormYearField name={field.name}/>
                             } else {
-                                return <FormTextField name={field.type}/>
+                                return <FormTextField name={field.name}/>
                             }
                         })}
                         <Button type='submit' variant='contained'>Assess by Filters</Button>
