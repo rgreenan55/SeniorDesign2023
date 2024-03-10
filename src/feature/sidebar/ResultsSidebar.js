@@ -11,7 +11,7 @@ const ResultsSidebar = ({ setData, data }) => {
             let result = null;
             if (false) result = await GetAssessmentByAddress(data)
             else result = await GetAssessmentByArguments(data)
-            setAssessment(result)
+            setAssessment(JSON.stringify(result))   // TODO organize this when complete
         }
         request();
     }, []);
