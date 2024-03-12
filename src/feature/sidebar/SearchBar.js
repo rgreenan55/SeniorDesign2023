@@ -12,6 +12,7 @@ const SearchBar = () => {
         // let data = inputValue ? ['aaa', 'aab'] : [];    // TODO: Retrieve from Google via API?
         let autocomplete;
         function initAutocomplete(){
+            if(autocomplete != null){
             autocomplete = new google.maps.places.Autocomplete(
                 document.getElementById('autocomplete'),
                 {
@@ -19,6 +20,7 @@ const SearchBar = () => {
                     componentRestictions: {'country' :['CA']},
                     fields: ['place_id', 'geometry', 'name']
                 })
+            }
         }
         initAutocomplete();
         setOptions(autocomplete);
