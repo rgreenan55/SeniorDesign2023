@@ -9,21 +9,27 @@ const SearchBar = () => {
     const [options, setOptions] = React.useState([]);
 
     React.useEffect(() => {
+
         // let data = inputValue ? ['aaa', 'aab'] : [];    // TODO: Retrieve from Google via API?
+        
         let autocomplete;
+
         function initAutocomplete(){
-            if(autocomplete != null){
             autocomplete = new google.maps.places.Autocomplete(
                 document.getElementById('autocomplete'),
                 {
                     types: ['address'],
                     componentRestictions: {'country' :['CA']},
                     fields: ['place_id', 'geometry', 'name']
-                })
-            }
+                }
+            )
         }
+
         initAutocomplete();
-        setOptions(autocomplete);
+        if(inputValue){ // checl for user inputting value
+            setOptions(autocomplete);
+        }
+
     }, [inputValue]);
 
     const renderInput = (params) => (
@@ -44,7 +50,10 @@ const SearchBar = () => {
         <Box display='flex' paddingY='8px' paddingX='16px'>
             <Autocomplete
                 value={value}
-                options={options}
+                //options={options}
+                // wait for results to get in before applying options.filter
+                // does not work still crashes with same error
+                options={!options ? [{label:"Loading...", id:0}] : options }
                 noOptionsText={"No Locations Found"}
                 onChange={(_, newValue) => {
                     setInputValue(newValue);
