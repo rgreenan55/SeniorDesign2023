@@ -1,8 +1,9 @@
 import React from 'react';
-import { Autocomplete, Box, Divider, IconButton, InputAdornment, Paper, TextField } from '@mui/material';
+import { Autocomplete, Box, Divider, Grid, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
-import { Button } from '@mui/base';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { SearchAddress } from '../../services/address.js';
 
 const SearchBar = ({ setData }) => {
     const [value, setValue] = React.useState(null);
@@ -10,9 +11,11 @@ const SearchBar = ({ setData }) => {
     const [options, setOptions] = React.useState([]);
 
     React.useEffect(() => {
-        // TODO : Have this ping external API for address auto-complete options.
-        let data = inputValue ? ['aaa', 'aab'] : [];
-        setOptions(data);
+        const GetAddressOptions = async () => {
+            let data = await SearchAddress(inputValue);
+            setOptions(data || []);
+        } 
+        GetAddressOptions();
     }, [inputValue]);
 
     const onSubmit = (event) => {
@@ -34,6 +37,32 @@ const SearchBar = ({ setData }) => {
         />
     )
 
+    const renderOption = (props, option) => {
+        let text = option // option.address
+        //let lat = option.lat;
+        //let lng = option.lng;
+
+        return (
+            <li {...props}>
+                <Grid container alignItems="center" sx={{ border: '1px' }}>
+                    <Grid item sx={{ display: 'flex', width: 44 }}>
+                        <LocationOnIcon sx={{ color: 'text.secondary' }} />
+                    </Grid>
+                    <Grid item sx={{ width: 'calc(100% - 44px)', wordWrap: 'break-word' }}>
+                        <Box
+                            component="span"
+                        >
+                            {text}
+                        </Box>
+                        <Typography variant="body2" color="text.secondary">
+                            {"Lat Lng"}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </li>
+        )
+    }
+        
     return (
         <Box display='flex' paddingY='8px' paddingX='16px'>
             <Autocomplete
@@ -45,6 +74,7 @@ const SearchBar = ({ setData }) => {
                 autoComplete
                 includeInputInList
                 renderInput={renderInput}
+                renderOption={renderOption}
                 sx={{ flex: 1 }}
             />
             <IconButton size='small' onClick={onSubmit}>
