@@ -1,18 +1,20 @@
 import React from 'react';
 import { Box, IconButton, Paper, Typography } from '@mui/material';
 import { ExitToApp } from '@mui/icons-material';
-import { GetAssessment } from '../../services/assessment';
+import { GetAssessmentByAddress, GetAssessmentByArguments } from '../../services/assessment';
 
 const ResultsSidebar = ({ setData, data }) => {
     const [assessment, setAssessment] = React.useState(null)
 
     React.useEffect(() => {
         const request = async () => {
-            const result = await GetAssessment(data)
-            setAssessment(result.assessment)
+            let result = null;
+            if (false) result = await GetAssessmentByAddress(data)
+            else result = await GetAssessmentByArguments(data)
+            setAssessment(JSON.stringify(result))   // TODO organize this when complete
         }
-        request()
-    }, [])
+        request();
+    }, []);
     
     return (
         <Paper>            
