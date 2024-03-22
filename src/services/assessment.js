@@ -10,8 +10,6 @@ const RequestAIArguments = async () => {
         let response = await api.get('/get-ai-args');
         let data = response.data;
 
-        // Of the form [{name: 'x', type: 'double'}]
-
         return data;
     } catch(e) {
         return [];
@@ -20,7 +18,6 @@ const RequestAIArguments = async () => {
 
 const GetAssessmentByArguments = async (data) => {
     try {
-        // Data of the form [{name: 'x', data: 'xyz'}]
         let response = await api.get('/get-assessment-by-arguments', { params: { arguments: data }});
         let data = response.data;
 
@@ -32,10 +29,11 @@ const GetAssessmentByArguments = async (data) => {
 
 const GetAssessmentByAddress = async (data) => {
     try {
-        // Address Data
-        let response = await api.get('/get-assessment-by-address', { params: { arguments: data }});
+        let response = await api.get('/get-assessment-by-address', { params: { address: data }});
 
-        return null;
+        if (response.data == "No address provided") throw new Error(response.data);
+
+        return response.data;
     } catch(e) {
         return null;
     }

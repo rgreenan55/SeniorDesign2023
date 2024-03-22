@@ -11,6 +11,7 @@ const ResultsSidebarContainer = ({ children }) => {
             key='results-sidebar-container'
             position='absolute'
             width={100/4 + 'vw'}
+            minWidth='400px'
             zIndex={2}
             component={motion.div}
             initial={{ x: '-100%' }}
@@ -38,7 +39,7 @@ const Home = () => {
                 )}
                 </AnimatePresence>
 
-                <Grid item component={motion.div} xs={3} zIndex={1} p='16px'>
+                <Grid item component={motion.div} xs={3} zIndex={1} p='16px' minWidth='400px'>
                     <Sidebar setData={setSearchData} />
                 </Grid>
             </Grid>

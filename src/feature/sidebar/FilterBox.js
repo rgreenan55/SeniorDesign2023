@@ -21,9 +21,9 @@ const FilterBox = ({ setData }) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget)
     
-        const obj = {};
-        for (var [key, val] of formData.entries())  obj[key] = val;
-        setData(obj);
+        const value = {};
+        for (var [key, val] of formData.entries())  value[key] = val;
+        setData({ origin: 'filter', value: value });
     }
 
     return (

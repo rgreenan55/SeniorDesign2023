@@ -20,7 +20,7 @@ const SearchBar = ({ setData }) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        setData(value);
+        setData({ origin: 'search', value: value });
     }
 
     const renderInput = (params) => (
