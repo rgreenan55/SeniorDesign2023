@@ -5,6 +5,7 @@ const api = axios.create({
     headers: { 'Access-Control-Allow-Origin': '*' }
 });
 
+/* Requests Argument for FilterBox */
 const RequestAIArguments = async () => {
     try {
         let response = await api.get('/get-ai-args');
@@ -16,6 +17,7 @@ const RequestAIArguments = async () => {
     }
 }
 
+/* Requests Assessment from FilterBox Inputs */
 const GetAssessmentByArguments = async (data) => {
     try {
         let response = await api.get('/get-assessment-by-arguments', { params: { arguments: data }});
@@ -27,6 +29,7 @@ const GetAssessmentByArguments = async (data) => {
     }
 }
 
+/* Requests Assessment from given Address */
 const GetAssessmentByAddress = async (data) => {
     try {
         let response = await api.get('/get-assessment-by-address', { params: { address: data }});

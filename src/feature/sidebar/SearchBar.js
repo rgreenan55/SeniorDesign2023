@@ -5,6 +5,7 @@ import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { SearchAddress } from '../../services/address.js';
 
+/* Search bar which allows the searching of addresses */
 const SearchBar = ({ setData }) => {
     const [value, setValue] = React.useState(null);
     const [inputValue, setInputValue] = React.useState('')

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
+/* Text Field for Filter Box */
 const FormTextField = ({ name, ...props }) => {
     const label = name.replace(/([A-Z])/g, " $1");
 

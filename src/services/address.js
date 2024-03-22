@@ -5,6 +5,7 @@ const api = axios.create({
     headers: { 'Access-Control-Allow-Origin': '*' }
 });
 
+/* Searches Addres with Prefix */
 const SearchAddress = async (prefix) => {
     try {
         let response = await api.get('/get-all-addresses-by-prefix', { params: { prefix }});

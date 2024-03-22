@@ -5,6 +5,7 @@ import Sidebar from '../feature/sidebar/Sidebar';
 import ResultsSidebar from '../feature/sidebar/ResultsSidebar';
 import Map from '../feature/map/Map';
 
+/* Container for Assessment Display Sidebar */
 const ResultsSidebarContainer = ({ children }) => {
     return (
         <Box
@@ -23,6 +24,7 @@ const ResultsSidebarContainer = ({ children }) => {
     )
 }
 
+/* Home Page of Application */
 const Home = () => {
     const [searchData, setSearchData] = React.useState(null);
 

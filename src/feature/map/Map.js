@@ -16,6 +16,7 @@ const Recenter = ({ location }) => {
     }
 }
 
+/* Map Component Utilizing Leaflet */
 const Map = () => {
     const [location, setLocation] = React.useState();
 

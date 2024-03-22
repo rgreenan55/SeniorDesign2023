@@ -3,6 +3,7 @@ import { Box, IconButton, Paper, Typography } from '@mui/material';
 import { ExitToApp } from '@mui/icons-material';
 import { GetAssessmentByAddress, GetAssessmentByArguments } from '../../services/assessment';
 
+/* Result Sidebar for displaying Assessment Results */
 const ResultsSidebar = ({ setData, data }) => {
     const [assessment, setAssessment] = React.useState(null)
     const [loading, setLoading] = React.useState(false)

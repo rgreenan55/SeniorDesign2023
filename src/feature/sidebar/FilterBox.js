@@ -5,6 +5,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { FormTextField, FormNumberField, FormYearField } from '../../components/CustomTextFields';
 import { RequestAIArguments } from '../../services/assessment';
 
+/* Filter box which allows user to input house filters to perform assessment by */
 const FilterBox = ({ setData }) => {
     const [open, setOpen] = React.useState(false)
     const [inputFields, setInputFields] = React.useState([]);

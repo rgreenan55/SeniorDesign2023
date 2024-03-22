@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
+/* Year Field for Filter Box */
 const FormYearField = ({ name, ...props }) => {
     const label = name.replace(/([A-Z])/g, " $1");
     const currentYear = new Date().getFullYear()

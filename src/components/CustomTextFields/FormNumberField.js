@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputAdornment, TextField } from '@mui/material';
 
+/* Number Field for Filter Box */
 const FormNumberField = ({ name, currency, ...props }) => {
     const label = name.replace(/([A-Z])/g, " $1");
 
