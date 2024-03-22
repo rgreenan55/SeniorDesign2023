@@ -43,20 +43,6 @@ const FilterBox = ({ setData }) => {
                             }
                         })}
                         <Button type='submit' variant='contained'>Assess by Filters</Button>
-
-                        {/*
-                        <FormTextField name="location"/>
-
-                        <Stack spacing={2} direction='row'>
-                            <FormNumberField name="rooms" />
-                            <FormNumberField name="bedrooms" />
-                            <FormNumberField name="bathrooms"/>
-                        </Stack>
-
-                        <FormYearField name="dateConstructed" />
-
-                        <Button type='submit' variant='contained'>Assess by Filters</Button>
-                        */}
                     </Stack>
                 </Box>
             )}
