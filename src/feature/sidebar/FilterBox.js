@@ -5,6 +5,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { FormTextField, FormNumberField, FormYearField } from '../../components/CustomTextFields';
 import { RequestAIArguments } from '../../services/assessment';
 
+/* Filter box which allows user to input house filters to perform assessment by */
 const FilterBox = ({ setData }) => {
     const [open, setOpen] = React.useState(false)
     const [inputFields, setInputFields] = React.useState([]);
@@ -21,9 +22,9 @@ const FilterBox = ({ setData }) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget)
     
-        const obj = {};
-        for (var [key, val] of formData.entries())  obj[key] = val;
-        setData(obj);
+        const value = {};
+        for (var [key, val] of formData.entries())  value[key] = val;
+        setData({ origin: 'filter', value: value });
     }
 
     return (
@@ -43,20 +44,6 @@ const FilterBox = ({ setData }) => {
                             }
                         })}
                         <Button type='submit' variant='contained'>Assess by Filters</Button>
-
-                        {/*
-                        <FormTextField name="location"/>
-
-                        <Stack spacing={2} direction='row'>
-                            <FormNumberField name="rooms" />
-                            <FormNumberField name="bedrooms" />
-                            <FormNumberField name="bathrooms"/>
-                        </Stack>
-
-                        <FormYearField name="dateConstructed" />
-
-                        <Button type='submit' variant='contained'>Assess by Filters</Button>
-                        */}
                     </Stack>
                 </Box>
             )}

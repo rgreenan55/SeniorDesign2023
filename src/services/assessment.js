@@ -5,38 +5,40 @@ const api = axios.create({
     headers: { 'Access-Control-Allow-Origin': '*' }
 });
 
+/* Requests Argument for FilterBox */
 const RequestAIArguments = async () => {
     try {
         let response = await api.get('/get-ai-args');
-        let data = response.data;
+        let args = response.data;
 
-        // Of the form [{name: 'x', type: 'double'}]
-
-        return data;
+        return args;
     } catch(e) {
+        console.error(e);
         return [];
     }
 }
 
-const GetAssessmentByArguments = async (data) => {
+/* Requests Assessment from FilterBox Inputs */
+const GetAssessmentByArguments = async (args) => {
     try {
-        // Data of the form [{name: 'x', data: 'xyz'}]
-        let response = await api.get('/get-assessment-by-arguments', { params: { arguments: data }});
-        let data = response.data;
-
-        return data;
+        let response = await api.get('/get-assessment-by-arguments', { params: { arguments: args }});
+        return response.data;
     } catch(e) {
+        console.error(e);
         return null;
     }
 }
 
-const GetAssessmentByAddress = async (data) => {
+/* Requests Assessment from given Address */
+const GetAssessmentByAddress = async (address) => {
     try {
-        // Address Data
-        let response = await api.get('/get-assessment-by-address', { params: { arguments: data }});
+        let response = await api.get('/get-assessment-by-address', { params: { address }});
 
-        return null;
+        if (response.data == "No address provided") throw new Error(response.data);
+
+        return response.data;
     } catch(e) {
+        console.error(e);
         return null;
     }
 }

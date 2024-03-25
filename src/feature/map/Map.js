@@ -9,26 +9,37 @@ const coordinates = {
     'Default': [38.685516, -101.073324]
 }
 
-const Recenter = ({ location }) => {
-    if (location) {
-        const map = useMap();
-        map.setView(location, 14);
-    }
-}
-
-const Map = () => {
+/* Map Component Utilizing Leaflet */
+const Map = ({ addressInfo }) => {
     const [location, setLocation] = React.useState();
+    const [map, setMap] = React.useState()
+    const [marker, setMarker] = React.useState();
+
+    React.useEffect(() => {
+
+        if (addressInfo) {
+            let { address, lat, lng } = addressInfo;
+            if (lat && lng) {
+                let latlng = new L.latLng(lat, lng)
+                map.flyTo(latlng)
+
+                if (marker) map.removeLayer(marker);
+                setMarker(new L.marker(latlng).bindTooltip(address, { direction: "right"}).addTo(map))
+            }
+        }
+
+    }, [addressInfo])
 
     React.useEffect(() => {        
-        const showCurrnetPosition = (position) => {
+        const showCurrentPosition = (position) => {
             setLocation([position.coords.latitude, position.coords.longitude])
         }
-        navigator.geolocation ? navigator.geolocation.getCurrentPosition(showCurrnetPosition) : coordinates.Default;
+        navigator.geolocation ? navigator.geolocation.getCurrentPosition(showCurrentPosition) : coordinates.Default;
     }, [])
 
     return (
         <Box position='absolute' width='100%' height='100vh' zIndex={1}>
-            <MapContainer center={coordinates.Fredericton} zoom={14} zoomControl={false}>
+            <MapContainer center={coordinates.Fredericton} zoom={14} zoomControl={false} ref={setMap}>
                 <TileLayer url={'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'} subdomains={['mt0','mt1','mt2','mt3']} maxZoom={20} />
                 <ZoomControl position={'bottomright'}/>
                 {/* <Recenter location={location} /> */}

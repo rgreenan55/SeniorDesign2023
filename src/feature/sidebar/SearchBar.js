@@ -1,23 +1,27 @@
 import React from 'react';
-import { Autocomplete, Box, Divider, IconButton, InputAdornment, Paper, TextField } from '@mui/material';
+import { Autocomplete, Box, Divider, Grid, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
-import { Button } from '@mui/base';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { SearchAddress } from '../../services/address.js';
 
+/* Search bar which allows the searching of addresses */
 const SearchBar = ({ setData }) => {
     const [value, setValue] = React.useState(null);
     const [inputValue, setInputValue] = React.useState('')
     const [options, setOptions] = React.useState([]);
 
     React.useEffect(() => {
-        // TODO : Have this ping external API for address auto-complete options.
-        let data = inputValue ? ['aaa', 'aab'] : [];
-        setOptions(data);
+        const GetAddressOptions = async () => {
+            let data = await SearchAddress(inputValue);
+            setOptions(data || []);
+        } 
+        GetAddressOptions();
     }, [inputValue]);
 
     const onSubmit = (event) => {
         event.preventDefault();
-        setData(value);
+        setData({ origin: 'search', value: value });
     }
 
     const renderInput = (params) => (
@@ -34,6 +38,27 @@ const SearchBar = ({ setData }) => {
         />
     )
 
+    const renderOption = (props, option) => {
+        return (
+            <li {...props}>
+                <Grid container alignItems="center" sx={{ border: '1px' }}>
+                    <Grid item sx={{ display: 'flex', width: 44 }}>
+                        <LocationOnIcon sx={{ color: 'text.secondary' }} />
+                    </Grid>
+                    <Grid item sx={{ width: 'calc(100% - 44px)', wordWrap: 'break-word' }}>
+                        <Box
+                            component="span"
+                        >
+                            {option.address}
+                        </Box>
+                        <Typography variant="body2" color="text.secondary"> {"Lat: " + option.lat} </Typography>
+                        <Typography variant="body2" color="text.secondary"> {"Lng: " + option.lng} </Typography>
+                    </Grid>
+                </Grid>
+            </li>
+        )
+    }
+        
     return (
         <Box display='flex' paddingY='8px' paddingX='16px'>
             <Autocomplete
@@ -42,9 +67,12 @@ const SearchBar = ({ setData }) => {
                 noOptionsText={"No Locations Found"}
                 onChange={(_, newValue) => setValue(newValue)}
                 onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
+                getOptionLabel={(option) => option.address}
+                isOptionEqualToValue={(option, value) => option.address === value.address}
                 autoComplete
                 includeInputInList
                 renderInput={renderInput}
+                renderOption={renderOption}
                 sx={{ flex: 1 }}
             />
             <IconButton size='small' onClick={onSubmit}>

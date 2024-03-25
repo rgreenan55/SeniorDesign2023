@@ -3,6 +3,7 @@ import { Paper, Stack } from '@mui/material';
 import SearchBar from './SearchBar';
 import FilterBox from './FilterBox';
 
+/* Main Sidebar Content */
 const Sidebar = ({ setData }) => {
     return (
         <Stack spacing={2}>

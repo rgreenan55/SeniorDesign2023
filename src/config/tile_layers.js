@@ -1,3 +1,4 @@
+/* Tile Layers for Leaflet Map */
 const tileLayerOptions = {
     'google': {
         url: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',

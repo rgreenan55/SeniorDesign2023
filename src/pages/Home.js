@@ -5,12 +5,14 @@ import Sidebar from '../feature/sidebar/Sidebar';
 import ResultsSidebar from '../feature/sidebar/ResultsSidebar';
 import Map from '../feature/map/Map';
 
+/* Container for Assessment Display Sidebar */
 const ResultsSidebarContainer = ({ children }) => {
     return (
         <Box
             key='results-sidebar-container'
             position='absolute'
             width={100/4 + 'vw'}
+            minWidth='400px'
             zIndex={2}
             component={motion.div}
             initial={{ x: '-100%' }}
@@ -22,12 +24,13 @@ const ResultsSidebarContainer = ({ children }) => {
     )
 }
 
+/* Home Page of Application */
 const Home = () => {
     const [searchData, setSearchData] = React.useState(null);
 
     return (
         <>
-            <Map />
+            <Map addressInfo={searchData?.value} />
             <Grid container height='100vh'>
             
                 <AnimatePresence>
@@ -38,7 +41,7 @@ const Home = () => {
                 )}
                 </AnimatePresence>
 
-                <Grid item component={motion.div} xs={3} zIndex={1} p='16px'>
+                <Grid item component={motion.div} xs={3} zIndex={1} p='16px' minWidth='400px'>
                     <Sidebar setData={setSearchData} />
                 </Grid>
             </Grid>
