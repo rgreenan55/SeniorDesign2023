@@ -30,7 +30,7 @@ const Home = () => {
 
     return (
         <>
-            <Map />
+            <Map addressInfo={searchData?.value} />
             <Grid container height='100vh'>
             
                 <AnimatePresence>

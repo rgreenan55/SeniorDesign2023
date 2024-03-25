@@ -9,35 +9,36 @@ const api = axios.create({
 const RequestAIArguments = async () => {
     try {
         let response = await api.get('/get-ai-args');
-        let data = response.data;
+        let args = response.data;
 
-        return data;
+        return args;
     } catch(e) {
+        console.error(e);
         return [];
     }
 }
 
 /* Requests Assessment from FilterBox Inputs */
-const GetAssessmentByArguments = async (data) => {
+const GetAssessmentByArguments = async (args) => {
     try {
-        let response = await api.get('/get-assessment-by-arguments', { params: { arguments: data }});
-        let data = response.data;
-
-        return data;
+        let response = await api.get('/get-assessment-by-arguments', { params: { arguments: args }});
+        return response.data;
     } catch(e) {
+        console.error(e);
         return null;
     }
 }
 
 /* Requests Assessment from given Address */
-const GetAssessmentByAddress = async (data) => {
+const GetAssessmentByAddress = async (address) => {
     try {
-        let response = await api.get('/get-assessment-by-address', { params: { address: data }});
+        let response = await api.get('/get-assessment-by-address', { params: { address }});
 
         if (response.data == "No address provided") throw new Error(response.data);
 
         return response.data;
     } catch(e) {
+        console.error(e);
         return null;
     }
 }

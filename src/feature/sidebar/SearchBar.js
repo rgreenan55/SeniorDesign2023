@@ -39,10 +39,6 @@ const SearchBar = ({ setData }) => {
     )
 
     const renderOption = (props, option) => {
-        let text = option // option.address
-        //let lat = option.lat;
-        //let lng = option.lng;
-
         return (
             <li {...props}>
                 <Grid container alignItems="center" sx={{ border: '1px' }}>
@@ -53,11 +49,10 @@ const SearchBar = ({ setData }) => {
                         <Box
                             component="span"
                         >
-                            {text}
+                            {option.address}
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
-                            {"Lat Lng"}
-                        </Typography>
+                        <Typography variant="body2" color="text.secondary"> {"Lat: " + option.lat} </Typography>
+                        <Typography variant="body2" color="text.secondary"> {"Lng: " + option.lng} </Typography>
                     </Grid>
                 </Grid>
             </li>
@@ -72,6 +67,8 @@ const SearchBar = ({ setData }) => {
                 noOptionsText={"No Locations Found"}
                 onChange={(_, newValue) => setValue(newValue)}
                 onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
+                getOptionLabel={(option) => option.address}
+                isOptionEqualToValue={(option, value) => option.address === value.address}
                 autoComplete
                 includeInputInList
                 renderInput={renderInput}

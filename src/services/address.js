@@ -13,6 +13,7 @@ const SearchAddress = async (prefix) => {
 
         return data;
     } catch(e) {
+        console.error(e)
         return [];
     }
 }

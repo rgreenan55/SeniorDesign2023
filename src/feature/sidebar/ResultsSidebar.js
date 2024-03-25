@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, IconButton, Paper, Typography } from '@mui/material';
 import { ExitToApp } from '@mui/icons-material';
 import { GetAssessmentByAddress, GetAssessmentByArguments } from '../../services/assessment';
+import { useMap } from 'react-leaflet';
 
 /* Result Sidebar for displaying Assessment Results */
 const ResultsSidebar = ({ setData, data }) => {
@@ -11,9 +12,9 @@ const ResultsSidebar = ({ setData, data }) => {
     React.useEffect(() => {
         const request = async () => {
             let result = null;
-            if (data.origin === 'search') result = await GetAssessmentByAddress(data.value)
+            if (data.origin === 'search') result = await GetAssessmentByAddress(data.value?.address)
             else if (data.origin === 'filter') result = await GetAssessmentByArguments(data.value)
-            setAssessment(result)
+            setAssessment(result);
             setLoading(false);
         }
         setLoading(true);
@@ -30,7 +31,7 @@ const ResultsSidebar = ({ setData, data }) => {
                 </Box>
                 {assessment ? (
                     <Paper>
-                        {data.origin === 'search' && <Typography flex={1} textAlign='center'> {data.value} </Typography>}
+                        {data.origin === 'search' && <Typography flex={1} textAlign='center'> {data.value.address} </Typography>}
                         <Typography flex={1} textAlign='center'> Actual: {formatCurrency(assessment.actual)} </Typography>
                         <Typography flex={1} textAlign='center'> Estimate: {formatCurrency(assessment.estimate)} </Typography>
                         <Typography flex={1} textAlign='center'> Difference: {formatCurrency(assessment.difference) + ` (${assessment.percent?.toFixed(2)}%)`} </Typography>
