@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Rooms",
+        "type": "float64"
+    },
+    {
+        "name": "Bedrooms",
+        "type": "float64"
+    },
+    {
+        "name": "Bathrooms",
+        "type": "float64"
+    },
+    {
+        "name": "Square Footage",
+        "type": "float64"
+    }
+]
