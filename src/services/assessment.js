@@ -21,7 +21,7 @@ const RequestAIArguments = async () => {
 /* Requests Assessment from FilterBox Inputs */
 const GetAssessmentByArguments = async (args) => {
     try {
-        let response = await api.get('/get-assessment-by-arguments', { params: { arguments: args }});
+        let response = await api.get('/get-assessment-by-arguments', { params: { ...args }});
         return response.data;
     } catch(e) {
         console.error(e);

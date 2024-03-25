@@ -1,5 +1,5 @@
 import React from 'react';
-import { Autocomplete, Box, Divider, Grid, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
+import { Autocomplete, Box, Grid, IconButton, InputAdornment, TextField, Tooltip, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -10,6 +10,7 @@ const SearchBar = ({ setData }) => {
     const [value, setValue] = React.useState(null);
     const [inputValue, setInputValue] = React.useState('')
     const [options, setOptions] = React.useState([]);
+    const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
         const GetAddressOptions = async () => {
@@ -21,7 +22,13 @@ const SearchBar = ({ setData }) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        setData({ origin: 'search', value: value });
+
+        if (value) {
+            setData({ origin: 'search', value: value });
+            setError(false);
+        } else {
+            setError(true)
+        }
     }
 
     const renderInput = (params) => (
@@ -61,20 +68,20 @@ const SearchBar = ({ setData }) => {
         
     return (
         <Box display='flex' paddingY='8px' paddingX='16px'>
-            <Autocomplete
-                value={value}
-                options={options}
-                noOptionsText={"No Locations Found"}
-                onChange={(_, newValue) => setValue(newValue)}
-                onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
-                getOptionLabel={(option) => option.address}
-                isOptionEqualToValue={(option, value) => option.address === value.address}
-                autoComplete
-                includeInputInList
-                renderInput={renderInput}
-                renderOption={renderOption}
-                sx={{ flex: 1 }}
-            />
+                <Autocomplete
+                    value={value}
+                    options={options}
+                    noOptionsText={"No Locations Found"}
+                    onChange={(_, newValue) => setValue(newValue)}
+                    onInputChange={(_, newInputValue) => setInputValue(newInputValue)}
+                    getOptionLabel={(option) => option.address}
+                    isOptionEqualToValue={(option, value) => option.address === value.address}
+                    autoComplete
+                    includeInputInList
+                    renderInput={renderInput}
+                    renderOption={renderOption}
+                    sx={{ flex: 1 }}
+                />
             <IconButton size='small' onClick={onSubmit}>
                 <KeyboardReturnIcon fontSize='small' />
             </IconButton>

@@ -21,7 +21,7 @@ const Map = ({ addressInfo }) => {
             let { address, lat, lng } = addressInfo;
             if (lat && lng) {
                 let latlng = new L.latLng(lat, lng)
-                map.flyTo(latlng)
+                map.flyTo(latlng, 16)
 
                 if (marker) map.removeLayer(marker);
                 setMarker(new L.marker(latlng).bindTooltip(address, { direction: "right"}).addTo(map))

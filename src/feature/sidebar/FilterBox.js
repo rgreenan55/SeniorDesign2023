@@ -23,7 +23,7 @@ const FilterBox = ({ setData }) => {
         const formData = new FormData(event.currentTarget)
     
         const value = {};
-        for (var [key, val] of formData.entries())  value[key] = val;
+        for (var [key, val] of formData.entries())  value[key] = val || 0;
         setData({ origin: 'filter', value: value });
     }
 
@@ -33,15 +33,15 @@ const FilterBox = ({ setData }) => {
                 <Box component='form' onSubmit={handleSubmit}>
                     <Stack spacing={2} display='flex' flexGrow={1} justifyContent='center' padding='24px'>
                         {inputFields.map(field => {
-                            const type = field.type;
-
-                            if (type === 'float64') {
+                            return <FormTextField key={field.name} name={field.name} />
+                            //const type = field.type;
+                            {/* if (type === 'float64') {
                                 return <FormNumberField name={field.name} currency={field.currency} />
                             } else if (type == 'datetime') {
                                 return <FormYearField name={field.name}/>
                             } else {
                                 return <FormTextField name={field.name}/>
-                            }
+                            } */}
                         })}
                         <Button type='submit' variant='contained'>Assess by Filters</Button>
                     </Stack>
