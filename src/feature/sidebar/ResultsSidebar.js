@@ -1,8 +1,31 @@
 import React from 'react';
-import { Box, IconButton, Paper, Typography } from '@mui/material';
+import { Box, IconButton, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
 import { ExitToApp } from '@mui/icons-material';
 import { GetAssessmentByAddress, GetAssessmentByArguments } from '../../services/assessment';
-import { useMap } from 'react-leaflet';
+
+const JSONtoTypograph = (json) => {
+    let textArray = [];
+    for (var key in json) {
+        let text = key.replace(/([a-z])([A-Z])/g, "$1 $2").trim()
+        text = text.charAt(0).toUpperCase() + key.slice(1) + "-" + json[key];
+        textArray.push(text);
+    }
+
+    return (
+        <TableContainer sx={{ mt: '10%', width: 'auto', boxShadow: 5 }}>
+            <Table size="small">
+                <TableBody>
+                    {textArray.map(text => (
+                        <TableRow key={text}>
+                            <TableCell align='left'> {text.split('-')[0]} </TableCell>
+                            <TableCell align='right'>  {text.split('-')[1]} </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    )
+}
 
 /* Result Sidebar for displaying Assessment Results */
 const ResultsSidebar = ({ setData, data }) => {
@@ -30,12 +53,26 @@ const ResultsSidebar = ({ setData, data }) => {
                     <IconButton onClick={() => { setAssessment(null); setData(null); }}> <ExitToApp sx={{ transform: 'scaleX(-1)' }}/> </IconButton>
                 </Box>
                 {assessment ? (
-                    <Paper>
-                        {data.origin === 'search' && <Typography flex={1} textAlign='center'> {data.value.address} </Typography>}
-                        <Typography flex={1} textAlign='center'> Actual: {formatCurrency(assessment.actual)} </Typography>
-                        <Typography flex={1} textAlign='center'> Estimate: {formatCurrency(assessment.estimate)} </Typography>
-                        <Typography flex={1} textAlign='center'> Difference: {formatCurrency(assessment.difference) + ` (${assessment.percent?.toFixed(2)}%)`} </Typography>
-                    </Paper>
+                    <Box>
+                        <Typography variant='h4' flex={1} textAlign='center'> {data.origin == 'search' ? 'Search By Address' : 'Search By Filters'}</Typography>
+                        {data.origin === 'search' ? (
+                            <Typography variant='h6' flex={1} textAlign='center'> {data.value.address} </Typography>
+                        ) : (
+                            <Box mx='10%'>
+                                {JSONtoTypograph(data.value)}
+                            </Box>
+                        )}
+
+                        <Box mx='10%' marginTop='20%' boxShadow={5}>
+                            <Typography variant='h6' textAlign='center' whiteSpace='pre-line'> Estimate: {'\n' + formatCurrency(assessment.estimate)} </Typography>
+                            {data.origin == 'search' && (
+                                <>
+                                    <Typography mt='5%' variant='h6' flex={1} textAlign='center' whiteSpace='pre-line'> Actual: {'\n' + formatCurrency(assessment.actual)} </Typography>
+                                    <Typography mt='5%' variant='h6' flex={1} textAlign='center' whiteSpace='pre-line'> Difference: {'\n' + formatCurrency(assessment.difference) + ` (${assessment.percent?.toFixed(2)}%)`} </Typography>
+                                </>
+                            )}
+                        </Box>
+                    </Box>
                 ) : (
                     <Typography flex={1} textAlign='center'> {loading ? 'Loading...' : 'Error Retrieving Assessment'} </Typography>
                 )} 
