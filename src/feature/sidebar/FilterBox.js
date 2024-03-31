@@ -34,14 +34,6 @@ const FilterBox = ({ setData }) => {
                     <Stack spacing={2} display='flex' flexGrow={1} justifyContent='center' padding='24px'>
                         {inputFields.map(field => {
                             return <FormTextField key={field.name} name={field.name} />
-                            //const type = field.type;
-                            {/* if (type === 'float64') {
-                                return <FormNumberField name={field.name} currency={field.currency} />
-                            } else if (type == 'datetime') {
-                                return <FormYearField name={field.name}/>
-                            } else {
-                                return <FormTextField name={field.name}/>
-                            } */}
                         })}
                         <Button type='submit' variant='contained'>Assess by Filters</Button>
                     </Stack>
