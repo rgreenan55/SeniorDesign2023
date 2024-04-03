@@ -6,8 +6,7 @@ import { GetAssessmentByAddress, GetAssessmentByArguments } from '../../services
 const JSONtoTypograph = (json) => {
     let textArray = [];
     for (var key in json) {
-        let text = key.replace(/([a-z])([A-Z])/g, "$1 $2").trim()
-        text = text.charAt(0).toUpperCase() + key.slice(1) + "-" + json[key];
+        let text = key.charAt(0).toUpperCase() + key.slice(1) + "||" + json[key];
         textArray.push(text);
     }
 
@@ -17,8 +16,8 @@ const JSONtoTypograph = (json) => {
                 <TableBody>
                     {textArray.map(text => (
                         <TableRow key={text}>
-                            <TableCell align='left'> {text.split('-')[0]} </TableCell>
-                            <TableCell align='right'>  {text.split('-')[1]} </TableCell>
+                            <TableCell align='left'> {text.split('||')[0]} </TableCell>
+                            <TableCell align='right'>  {text.split('||')[1]} </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
